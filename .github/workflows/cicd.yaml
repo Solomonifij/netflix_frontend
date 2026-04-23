@@ -10,7 +10,7 @@ jobs:
 
     permissions:
       contents: read
-      id-token: write
+      
 
     steps:
     - name: Check out the repository
@@ -27,8 +27,14 @@ jobs:
         # role-session-name: GitHubActionsSession
         # aws-region: ${{ secrets.AWS_REGION }}
         
-    - name: Print AWS credentials (for debugging)
+    - name: Print AWS credentials source (DEBUG)
+      run: aws configure list
+
+    - name: Print AWS identity (DEBUG)
       run: aws sts get-caller-identity
+
+
+
 # Login to ECR
 #=============
     - name: Login to ECR
